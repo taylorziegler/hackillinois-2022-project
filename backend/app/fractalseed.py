@@ -4,11 +4,11 @@ import math
 import os
 
 params = { 'api_key': '19d84d5310f47c6e8eb0fd6e3e9104e0'}
-warm = {1: ['ff4800', 'ff7900', 'ffaa00'],
-2: ['cfdee7', 'cfdee7', 'ffc971']}
-cool = {1: ['99e2b4', '56ab91', '248277'],
-2: ['6247aa', '815ac0', '815ac0'],
-3: ['0a369d', '5e7ce2', 'cfdee7'],
+warm = {0: ['ff4800', 'ff7900', 'ffaa00'],
+1: ['cfdee7', 'cfdee7', 'ffc971']}
+cool = {0: ['99e2b4', '56ab91', '248277'],
+1: ['6247aa', '815ac0', '815ac0'],
+2: ['0a369d', '5e7ce2', 'cfdee7'],
 }
 
 # fetch.py will store this information in /tmp/temperature.json. ideally we would write a cron job to do this but idk if github pages can handle it
@@ -18,8 +18,8 @@ def FetchTemperature(): # not for use in production
 
 def GetTemperature():
     temp = 0
-    with open('/temp/temperature.json') as f:
-        temp = f.read()
+    with open('/temp/temperature.txt') as f:
+        temp = int(f.read())
     return temp
 
 def scalecolor(temp):
